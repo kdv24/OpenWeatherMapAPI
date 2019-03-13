@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Weather from "../components/Weather"
-// import Button from "@material-ui/core/Button"
 import Input from "@material-ui/core/Input"
 
 class IndexPage extends Component {
@@ -35,7 +34,6 @@ class IndexPage extends Component {
         windspeed: response.wind.speed,
         description: response.weather[0].description,
       })
-      console.log(response.name)
     } else {
       console.log("noop")
     }
@@ -53,7 +51,6 @@ class IndexPage extends Component {
         name: city,
         fiveDayForecast: response.list,
       })
-      console.log("Five day forecast for:", this.state.name, response.list)
     } else {
       console.log("noop")
     }
@@ -76,14 +73,6 @@ class IndexPage extends Component {
             style={{ width: "350px" }}
             onChange={this.handleChange}
           />
-          {/* <Button
-            variant="contained"
-            color="primary"
-            style={{ marginLeft: "40px" }}
-            type="submit"
-          >
-            Get the current freakin' weather!
-          </Button> */}
           <button type="button" onClick={this.getCurrentWeather}>
             Get Current Weather
           </button>
@@ -96,6 +85,7 @@ class IndexPage extends Component {
           temp={this.state.temp}
           windspeed={this.state.windspeed}
           description={this.state.description}
+          fiveDayForecast={this.state.fiveDayForecast}
         />
         <Link to="/page-2/">Go to page 2</Link>
       </Layout>
