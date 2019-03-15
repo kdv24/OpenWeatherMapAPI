@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import "bootstrap/dist/css/bootstrap.css"
 
 import { Link } from "gatsby"
 
@@ -55,6 +56,7 @@ class IndexPage extends Component {
       console.log("noop")
     }
   }
+
   handleChange(event) {
     this.setState({ name: event.target.value })
   }
@@ -62,24 +64,63 @@ class IndexPage extends Component {
   render() {
     return (
       <Layout>
-        <h1>Quick OpenWeatherAPI App</h1>
-        <form>
-          <Input
-            type="text"
-            name="city"
-            id="city"
-            placeholder="city"
-            value={this.state.name}
-            style={{ width: "350px" }}
-            onChange={this.handleChange}
-          />
-          <button type="button" onClick={this.getCurrentWeather}>
-            Get Current Weather
-          </button>
-          <button type="button" onClick={this.getFiveDayForecast}>
-            Get Five Day Forecast
-          </button>
-        </form>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <form>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+              }}
+            >
+              <Input
+                type="text"
+                name="city"
+                id="city"
+                placeholder="city"
+                value={this.state.name}
+                style={{
+                  marginRight: "10px",
+                  fontSize: "1.5em",
+                  alignSelf: "flex-end",
+                }}
+                onChange={this.handleChange}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <button
+                  style={{ margin: "2px" }}
+                  className="btn btn-info"
+                  type="button"
+                  onClick={this.getCurrentWeather}
+                >
+                  Get Current Weather
+                </button>
+                <button
+                  style={{ margin: "2px" }}
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={this.getFiveDayForecast}
+                >
+                  Get 5 Day Forecast
+                </button>
+              </div>
+            </div>
+            <div style={{ display: "flex" }}>
+              <button
+                style={{ marginTop: "10px" }}
+                className="btn btn-secondary"
+                type="button"
+                onClick={console.log("clear the input field")}
+              >
+                Start Over
+              </button>
+            </div>
+          </form>
+        </div>
         <Weather
           name={this.state.name}
           temp={this.state.temp}

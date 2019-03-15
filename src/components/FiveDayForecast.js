@@ -52,8 +52,8 @@ const FiveDayForecast = props => {
   })
 
   return (
-    <div>
-      Five Day Forecast results:
+    <div style={{ display: "flex" }}>
+      {/* Five Day Forecast results: */}
       <ul>{tempArray}</ul>
     </div>
   )
