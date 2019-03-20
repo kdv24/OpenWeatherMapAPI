@@ -64,70 +64,56 @@ class IndexPage extends Component {
   render() {
     return (
       <Layout>
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <form>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-              }}
-            >
+        <div className="container">
+          <div className="form-container">
+            <div className="input-form">
               <Input
+                className="input-field"
+                style={{ fontSize: "1.75em" }}
                 type="text"
                 name="city"
                 id="city"
                 placeholder="city"
                 value={this.state.name}
-                style={{
-                  marginRight: "10px",
-                  fontSize: "1.5em",
-                  alignSelf: "flex-end",
-                }}
                 onChange={this.handleChange}
               />
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <button
-                  style={{ margin: "2px" }}
-                  className="btn btn-info"
-                  type="button"
-                  onClick={this.getCurrentWeather}
-                >
-                  Get Current Weather
-                </button>
-                <button
-                  style={{ margin: "2px" }}
-                  className="btn btn-primary"
-                  type="button"
-                  onClick={this.getFiveDayForecast}
-                >
-                  Get 5 Day Forecast
-                </button>
-              </div>
             </div>
-            <div style={{ display: "flex" }}>
+            <div className="weather-buttons">
+              <button
+                className="btn btn-info individual-buttons"
+                type="button"
+                onClick={this.getCurrentWeather}
+              >
+                Get Current Weather
+              </button>
+              <button
+                className="btn btn-primary individual-buttons"
+                type="button"
+                onClick={this.getFiveDayForecast}
+              >
+                Get 5 Day Forecast
+              </button>
               <button
                 style={{ marginTop: "10px" }}
                 className="btn btn-secondary"
                 type="button"
-                onClick={console.log("clear the input field")}
+                onClick={() => console.log("clear the input field")}
               >
                 Start Over
               </button>
             </div>
-          </form>
+          </div>
+          <div className="results-container">
+            <Weather
+              name={this.state.name}
+              temp={this.state.temp}
+              windspeed={this.state.windspeed}
+              description={this.state.description}
+              fiveDayForecast={this.state.fiveDayForecast}
+            />
+          </div>
         </div>
-        <Weather
-          name={this.state.name}
-          temp={this.state.temp}
-          windspeed={this.state.windspeed}
-          description={this.state.description}
-          fiveDayForecast={this.state.fiveDayForecast}
-        />
+
         <Link to="/page-2/">Go to page 2</Link>
       </Layout>
     )

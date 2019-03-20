@@ -615,6 +615,58 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+/* CSS Grid setup for homepage */
+.container {
+  width: 100%;
+  min-height: 100%;
+  background: lightgray;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: minmax(1fr, 200px) 2fr;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+}
+
+.form-container {
+  padding: 20px;
+  max-height: minmax(1 fr, 250px);
+  background: #cae2f9;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+  padding-bottom: 20px;
+}
+
+.results-container {
+  padding: 20px;
+}
+
+.input-form {
+  display: grid;
+  grid-template-rows: 3r 1fr;
+  width: 100%;
+}
+
+.input-field {
+}
+
+.weather-buttons {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  padding-bottom: 20px;
+}
+.individual-buttons {
+  margin: 2px;
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
