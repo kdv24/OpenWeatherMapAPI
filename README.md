@@ -7,7 +7,7 @@
 1.  **Clone the site.**
 
     ```sh
-    git clone https://github.com/kdv24/QuickAPI.git
+    git clone https://github.com/kdv24/OpenWeatherMapAPI.git
 
     ```
 
@@ -32,9 +32,16 @@
     ```
 
     The site is now running at `http://localhost:8000`!
+
     ```
 
-4.  **Troubleshooting**
+4.  **See it live on the internet!**
+
+    You can also find it deployed here:
+
+    https://openweathermapapi.netlify.com/?_ga=2.33883496.858960585.1552960403-151375750.1549239439
+
+5)  **Troubleshooting**
 
     If you get a json error when you try to look at locahost:8000, try running `npm install` again now that you've removed the package-lock.json. Then start up the site again:
 
