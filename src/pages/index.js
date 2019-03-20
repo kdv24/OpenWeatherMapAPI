@@ -25,7 +25,7 @@ class IndexPage extends Component {
     let city = this.state.name
 
     const apiCall = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=73f40cade82485a32cbc385d8e01e7ea`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=73f40cade82485a32cbc385d8e01e7ea`
     )
     const response = await apiCall.json()
     if (city) {
@@ -44,7 +44,7 @@ class IndexPage extends Component {
     e.preventDefault()
     let city = this.state.name
     const apiCall = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=73f40cade82485a32cbc385d8e01e7ea`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=73f40cade82485a32cbc385d8e01e7ea`
     )
     const response = await apiCall.json()
     if (city) {
