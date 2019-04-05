@@ -3,7 +3,13 @@ import FiveDayForecast from "../components/FiveDayForecast"
 
 const Weather = props => {
   return (
-    <div style={{ display: "flex" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        paddingRight: "30px",
+      }}
+    >
       <div>
         {props.name && <h4>City: {props.name}</h4>}
         {props.temp && <h4>Temperature: {props.temp}</h4>}
