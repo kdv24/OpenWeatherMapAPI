@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Weather from "../components/Weather"
 import Input from "@material-ui/core/Input"
+import FiveDayForecast from "../components/FiveDayForecast"
 
 class IndexPage extends Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class IndexPage extends Component {
       windspeed: undefined,
       description: undefined,
       fiveDayForecast: [],
+      showCurrentWeather: true,
+      showFiveDayForecast: false,
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -34,6 +37,8 @@ class IndexPage extends Component {
         temp: response.main.temp,
         windspeed: response.wind.speed,
         description: response.weather[0].description,
+        showCurrentWeather: true,
+        showFiveDayForecast: false,
       })
     } else {
       console.log("noop")
@@ -51,6 +56,8 @@ class IndexPage extends Component {
       this.setState({
         name: city,
         fiveDayForecast: response.list,
+        showCurrentWeather: false,
+        showFiveDayForecast: true,
       })
     } else {
       console.log("noop")
@@ -62,6 +69,7 @@ class IndexPage extends Component {
   }
 
   render() {
+    console.log(this.state.showCurrentWeather, this.state.showFiveDayForecast)
     return (
       <Layout>
         <div className="container">
@@ -104,13 +112,21 @@ class IndexPage extends Component {
             </div>
           </div>
           <div className="results-container">
-            <Weather
-              name={this.state.name}
-              temp={this.state.temp}
-              windspeed={this.state.windspeed}
-              description={this.state.description}
-              fiveDayForecast={this.state.fiveDayForecast}
-            />
+            {this.state.showCurrentWeather === true ? (
+              <Weather
+                name={this.state.name}
+                temp={this.state.temp}
+                windspeed={this.state.windspeed}
+                description={this.state.description}
+                fiveDayForecast={this.state.fiveDayForecast}
+              />
+            ) : (
+              <FiveDayForecast
+                showFiveDayForecast={this.state.showFiveDayForecast}
+                fiveDayForecast={this.state.fiveDayForecast}
+              />
+            )}
+            {this.state.sho}
           </div>
         </div>
 

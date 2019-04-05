@@ -138,7 +138,6 @@ const FiveDayForecast = props => {
 
   return (
     <div style={{ display: "flex" }}>
-      {/* Five Day Forecast results: */}
       <ul
         style={{
           display: "flex",
