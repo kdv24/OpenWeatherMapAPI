@@ -41,7 +41,7 @@ class IndexPage extends Component {
         showFiveDayForecast: false,
       })
     } else {
-      console.log("noop")
+      alert("Please enter the name of a city.")
     }
   }
 
@@ -60,7 +60,7 @@ class IndexPage extends Component {
         showFiveDayForecast: true,
       })
     } else {
-      console.log("noop")
+      alert("Please enter the name of a city.")
     }
   }
 
@@ -69,7 +69,6 @@ class IndexPage extends Component {
   }
 
   render() {
-    console.log(this.state.showCurrentWeather, this.state.showFiveDayForecast)
     return (
       <Layout>
         <div className="container">
@@ -105,7 +104,13 @@ class IndexPage extends Component {
                 style={{ marginTop: "10px" }}
                 className="btn btn-secondary"
                 type="button"
-                onClick={() => console.log("clear the input field")}
+                onClick={() =>
+                  this.setState({
+                    name: "",
+                    showFiveDayForecast: false,
+                    showCurrentWeather: false,
+                  })
+                }
               >
                 Start Over
               </button>
@@ -121,10 +126,15 @@ class IndexPage extends Component {
                 fiveDayForecast={this.state.fiveDayForecast}
               />
             ) : (
+              ""
+            )}
+            {this.state.showFiveDayForecast === true ? (
               <FiveDayForecast
                 showFiveDayForecast={this.state.showFiveDayForecast}
                 fiveDayForecast={this.state.fiveDayForecast}
               />
+            ) : (
+              ""
             )}
             {this.state.sho}
           </div>
