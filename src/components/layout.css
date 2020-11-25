@@ -4,7 +4,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+  margin: 0 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -618,27 +618,11 @@ pre tt:after {
 
 /* CSS Grid setup for homepage */
 .container {
-  width: 100%;
+  min-width: 100%;
   min-height: 100%;
-  background: lightgray;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding: 20px;
+  background: #A5629A;
   display: grid;
-  grid-template-rows: minmax(1fr, 200px) 2fr;
-  grid-template-columns: 1fr;
-  grid-gap: 20px;
-}
 
-.form-container {
-  padding: 20px;
-  max-height: minmax(1 fr, 250px);
-  background: #cae2f9;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 10px;
-  padding-bottom: 20px;
 }
 
 .results-container {
@@ -646,29 +630,164 @@ pre tt:after {
 }
 
 .input-form {
-  display: grid;
-  grid-template-rows: 3r 1fr;
-  width: 100%;
+  margin: 0px 30px;
 }
 
 .input-field {
+  margin-top: 20px;
+  padding-left: 20px;
+  border-radius: 5px;
+  min-width: 346px;
+  background-color: lightgray;
 }
 
 .weather-buttons {
   display: grid;
-  justify-items: center;
   align-content: center;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "happy happy current hourly five-day";
   grid-gap: 10px;
-  padding-bottom: 20px;
-}
-.individual-buttons {
-  margin: 2px;
+  padding: 30px 20px;
 }
 
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
-  }
+.individual-buttons {
+  margin: 2px;
+  padding: 40px 20px;
+  min-width: 180px;
 }
+
+.btn-happy {
+  grid-area: happy
+}
+
+.btn-current {
+  grid-area: current
+}
+
+.btn-hourly {
+  grid-area: hourly
+}
+
+.btn-five-day {
+  grid-area: five-day
+}
+
+.btn-start-over {
+  grid-area: start-over;
+  padding: 15px;
+}
+
+.btn-green {
+  background-color: #B5BF61;
+  border-radius: 7px;
+}
+
+.btn-yellow {
+  background-color: #F2D86A;
+  border-radius: 7px;
+}
+
+.btn-blue {
+  background-color: #4368BC;
+  border-radius: 7px;
+}
+
+.happy-grid {
+  display: grid;
+  margin: 0px 30px;
+}
+
+.happy-days {
+  display: grid;
+  grid-template-areas: 
+  "monday tuesday"
+  "wednesday thursday"
+  "friday friday"
+  "saturday saturday"
+  "sunday sunday";
+  grid-gap: 10px;
+}
+
+.sunday {
+  grid-area: sunday;
+  padding: 100px 5px;
+  border-radius: 10px;
+  background-color: #4368BC;
+  text-align: center;
+  min-width: 150px;
+}
+
+.monday {
+  grid-area: monday;
+  padding: 100px 5px;
+  border-radius: 10px;
+  background-color: #4368BC;
+  text-align: center;
+  min-width: 150px;
+}
+
+.tuesday {
+  grid-area: tuesday;
+  padding: 100px 5px;
+  border-radius: 10px;
+  background-color: #4368BC;
+  text-align: center;
+  min-width: 150px;
+}
+
+.wednesday {
+  grid-area: wednesday;
+  padding: 100px 5px;
+  border-radius: 10px;
+  background-color: #4368BC;
+  text-align: center;
+  min-width: 150px;
+}
+
+.thursday {
+  grid-area: thursday;
+  padding: 100px 5px;
+  border-radius: 10px;
+  background-color: #4368BC;
+  text-align: center;
+  min-width: 150px;
+}
+
+.friday {
+  grid-area: friday;
+  padding: 100px 5px;
+  border-radius: 10px;
+  background-color: #4368BC;
+  text-align: center;
+  min-width: 150px;
+}
+
+.saturday {
+  grid-area: saturday;
+  padding: 100px 5px;
+  border-radius: 10px;
+  background-color: #4368BC;
+  text-align: center;
+  min-width: 150px;
+}
+
+/* Color Theme Swatches in Hex */
+.Happy-Weather-1-hex { color: #A5629A; }
+.Happy-Weather-2-hex { color: #4368BC; }
+.Happy-Weather-3-hex { color: #B5BF61; }
+.Happy-Weather-4-hex { color: #F2D86A; }
+.Happy-Weather-5-hex { color: #FF7852; }
+
+/* Color Theme Swatches in RGBA */
+.Happy-Weather-1-rgba { color: rgba(165, 98, 154, 1); }
+.Happy-Weather-2-rgba { color: rgba(67, 104, 188, 1); }
+.Happy-Weather-3-rgba { color: rgba(181, 191, 97, 1); }
+.Happy-Weather-4-rgba { color: rgba(242, 216, 106, 1); }
+.Happy-Weather-5-rgba { color: rgba(255, 120, 82, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Happy-Weather-1-hsla { color: hsla(309, 27, 51, 1); }
+.Happy-Weather-2-hsla { color: hsla(221, 47, 50, 1); }
+.Happy-Weather-3-hsla { color: hsla(66, 42, 56, 1); }
+.Happy-Weather-4-hsla { color: hsla(48, 83, 68, 1); }
+.Happy-Weather-5-hsla { color: hsla(13, 100, 66, 1); }

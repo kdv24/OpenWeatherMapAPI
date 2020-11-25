@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `OpenWeatherMap & Gatsby`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Happy Weather`,
+    description: `A simple weather app designed to show you the sun in your future`,
+    author: `@kdv24`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

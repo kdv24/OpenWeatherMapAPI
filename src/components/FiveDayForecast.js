@@ -7,6 +7,7 @@ const FiveDayForecast = props => {
   let today = currentDate.getDate()
   let printedDate = today
   let forecastDate
+  console.log(weatherObject)
 
   let tempArray = weatherArray.map(item => {
     let newest = Object.entries(item)
