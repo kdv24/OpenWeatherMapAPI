@@ -1,14 +1,13 @@
 import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.css"
 
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Weather from "../components/Weather"
 import Input from "@material-ui/core/Input"
 import FiveDayForecast from "../components/FiveDayForecast"
 import HourlyForecast from "../components/HourlyForecast"
-import { green } from "@material-ui/core/colors"
 
 class IndexPage extends Component {
   constructor(props) {
@@ -23,6 +22,7 @@ class IndexPage extends Component {
       showCurrentWeather: true,
       showHourlyForecast: true,
       showFiveDayForecast: false,
+      correctForecast: null,
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -36,6 +36,29 @@ class IndexPage extends Component {
     const lat = latLong.lat
     const long = latLong.lng
     return {lat, long }
+  }
+
+  getHappyWeather = async e => {
+    e.preventDefault()
+    let city = this.state.name
+
+    const apiCall = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=73f40cade82485a32cbc385d8e01e7ea`
+    )
+    const response = await apiCall.json()
+    if (city) {
+      this.setState({
+        name: city,
+        temp: response.main.temp,
+        windspeed: response.wind.speed,
+        description: response.weather[0].description,
+        showCurrentWeather: true,
+        showFiveDayForecast: false,
+      })
+    } else {
+      alert("Please enter the name of a city.")
+    }
+    this.getCorrectForecast('happy')
   }
 
   getCurrentWeather = async e => {
@@ -58,6 +81,7 @@ class IndexPage extends Component {
     } else {
       alert("Please enter the name of a city.")
     }
+    this.getCorrectForecast('current')
   }
 
   getHourlyForecast = async e => {
@@ -76,6 +100,7 @@ class IndexPage extends Component {
         name: city,
         hourlyForecast: hourly,
       })
+      this.getCorrectForecast('hourly')
   }
 
   getFiveDayForecast = async e => {
@@ -97,10 +122,66 @@ class IndexPage extends Component {
     } else {
       alert("Please enter the name of a city.")
     }
+    this.getCorrectForecast('fiveDay')
   }
 
   handleChange(event) {
     this.setState({ name: event.target.value })
+  }
+
+  getCorrectForecast = (forecastType) => {
+    let correctForecast;
+    switch (forecastType) {
+      case "happy":
+        correctForecast = (
+          <div className="happy-grid">
+            <div className="happy-days">
+              <div className="weather-days sunday">Sunday</div>
+              <div className="weather-days monday">Monday</div>
+              <div className="weather-days tuesday">Tuesday</div>
+              <div className="weather-days wednesday">Wednesday</div>
+              <div className="weather-days thursday">Thursday</div>
+              <div className="weather-days friday">Friday</div>
+              <div className="weather-days saturday">Saturday</div>
+            </div>
+          </div>
+        )
+        break
+      case "current":
+        correctForecast =  (
+          <Weather
+          name={this.state.name}
+          temp={this.state.temp}
+          windspeed={this.state.windspeed}
+          description={this.state.description}
+          fiveDayForecast={this.state.fiveDayForecast}
+        />
+        )
+        break
+      case "fiveDay":
+        correctForecast = (
+          <FiveDayForecast
+          showFiveDayForecast={this.state.showFiveDayForecast}
+          fiveDayForecast={this.state.fiveDayForecast}
+        />
+        )
+        break
+      case "hourly":
+        correctForecast = (
+          <HourlyForecast 
+          showHourlyForecast={this.state.showHourlyForecast}
+          hourlyForecast={this.state.hourlyForecast}
+        />
+        )
+        break
+      default:
+        correctForecast = (
+        <div>""</div>
+        )
+    }
+    this.setState({
+      correctForecast
+    })
   }
 
   render() {
@@ -124,7 +205,7 @@ class IndexPage extends Component {
               <button
                 className="btn-yellow btn-happy individual-buttons"
                 type="button"
-                onClick={this.getCurrentWeather}
+                onClick={this.getHappyWeather}
               >
                 Happy Weather
               </button>
@@ -150,62 +231,9 @@ class IndexPage extends Component {
                 5 Day Forecast
               </button>
             </div>
-              {/* <button
-                style={{ marginTop: "10px" }}
-                className="btn-yellow btn-start-over"
-                type="button"
-                onClick={() =>
-                  this.setState({
-                    name: "",
-                    showFiveDayForecast: false,
-                    showCurrentWeather: false,
-                  })
-                }
-              >
-                Start Over
-              </button> */}
           </div>
-          {/* <div className="results-container">
-            {this.state.showCurrentWeather === true ? (
-              <Weather
-                name={this.state.name}
-                temp={this.state.temp}
-                windspeed={this.state.windspeed}
-                description={this.state.description}
-                fiveDayForecast={this.state.fiveDayForecast}
-              />
-            ) : (
-              ""
-            )}
-            {this.state.showFiveDayForecast === true ? (
-              <FiveDayForecast
-                showFiveDayForecast={this.state.showFiveDayForecast}
-                fiveDayForecast={this.state.fiveDayForecast}
-              />
-            ) : (
-              ""
-            )}
-            {this.state.showHourlyForecast === true ? (
-              <HourlyForecast 
-                showHourlyForecast={this.state.showHourlyForecast}
-                hourlyForecast={this.state.hourlyForecast}
-              />
-            ) : (
-              ""
-            )}
-          </div> */}
-          <div className="happy-grid">
-            <div className="happy-days">
-              <div className="sunday">Sunday</div>
-              <div className="monday">Monday</div>
-              <div className="tuesday">Tuesday</div>
-              <div className="wednesday">Wednesday</div>
-              <div className="thursday">Thursday</div>
-              <div className="friday">Friday</div>
-              <div className="saturday">Saturday</div>
-            </div>
-          </div>
-          <div style={{height: "500px"}}>
+          <div>
+            {this.state.correctForecast ? this.state.correctForecast : (<div style={{height: "500px"}}></div>)}
           </div>
         </div>
         {/* <Link to="/page-2/">Go to page 2</Link> */}

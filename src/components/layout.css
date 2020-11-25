@@ -638,6 +638,7 @@ pre tt:after {
   padding-left: 20px;
   border-radius: 5px;
   min-width: 346px;
+  width: 100%;
   background-color: lightgray;
 }
 
@@ -694,81 +695,52 @@ pre tt:after {
 
 .happy-grid {
   display: grid;
-  margin: 0px 30px;
+  margin: 0px 20px;
 }
 
 .happy-days {
   display: grid;
   grid-template-areas: 
-  "monday tuesday"
-  "wednesday thursday"
-  "friday friday"
-  "saturday saturday"
-  "sunday sunday";
+  "monday tuesday wednesday"
+  "thursday friday friday"
+  "saturday saturday sunday";
   grid-gap: 10px;
+}
+
+.weather-days {
+  padding: 100px 5px;
+  border-radius: 10px;
+  background-color: #4368BC;
+  text-align: center;
+  min-width: 150px;
 }
 
 .sunday {
   grid-area: sunday;
-  padding: 100px 5px;
-  border-radius: 10px;
-  background-color: #4368BC;
-  text-align: center;
-  min-width: 150px;
 }
 
 .monday {
   grid-area: monday;
-  padding: 100px 5px;
-  border-radius: 10px;
-  background-color: #4368BC;
-  text-align: center;
-  min-width: 150px;
 }
 
 .tuesday {
   grid-area: tuesday;
-  padding: 100px 5px;
-  border-radius: 10px;
-  background-color: #4368BC;
-  text-align: center;
-  min-width: 150px;
 }
 
 .wednesday {
   grid-area: wednesday;
-  padding: 100px 5px;
-  border-radius: 10px;
-  background-color: #4368BC;
-  text-align: center;
-  min-width: 150px;
 }
 
 .thursday {
   grid-area: thursday;
-  padding: 100px 5px;
-  border-radius: 10px;
-  background-color: #4368BC;
-  text-align: center;
-  min-width: 150px;
 }
 
 .friday {
   grid-area: friday;
-  padding: 100px 5px;
-  border-radius: 10px;
-  background-color: #4368BC;
-  text-align: center;
-  min-width: 150px;
 }
 
 .saturday {
   grid-area: saturday;
-  padding: 100px 5px;
-  border-radius: 10px;
-  background-color: #4368BC;
-  text-align: center;
-  min-width: 150px;
 }
 
 /* Color Theme Swatches in Hex */
